@@ -1,0 +1,17 @@
+build-opt/
+install-opt/
+dist/
+*.pyc
+__pycache__/
+*.pyd
+*.so
+*.dll
+*.lib
+*.exp
+*.obj
+*.o
+*.a
+*.whl
+*.egg-info/
+.mesonpy/
+subprojects/boost_math/math/doc/

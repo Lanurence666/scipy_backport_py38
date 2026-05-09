@@ -1,0 +1,77 @@
+PS E:\AI_FUWANGGEZHANG\GPT-SoVITS-v4-for-win7\runtime> python.exe E:\AI_FUWANGGEZHANG\scipy-main\scipy-main\fix_py38_python.py
+Python 3.8 兼容性修复脚本 - Python 源码部分
+============================================================
+工作目录: E:\AI_FUWANGGEZHANG\scipy-main\scipy-main
+
+[1/4] 修复 setup.py / pyproject.toml 中的 Python 版本约束...
+  无需修改
+
+[2/4] 扫描 Python 源文件...
+  找到 1220 个 Python 文件
+
+[3/4] 修复 Python 3.9+ 语法和 API...
+  已修改 61 个文件
+
+[4/4] 最终验证...
+  [!] 语法编译错误: 1 个文件
+      scipy/stats/_continuous_distns.py:   File "E:\AI_FUWANGGEZHANG\scipy-main\scipy-main\scipy\stats\_continuous_distns.py", line 4131
+    @lambda func: np.vec
+  [OK] str.removeprefix/removesuffix: 已全部修复
+  [OK] functools.cache: 已全部修复
+  [OK] isinstance(x, A|B): 已全部修复
+  [OK] issubclass(x, A|B): 已全部修复
+  [OK] import importlib.metadata (未修复): 已全部修复
+  [OK] from typing import TypeAlias (未修复): 已全部修复
+  [OK] from typing import TypeGuard (未修复): 已全部修复
+  [OK] from typing import ParamSpec (未修复): 已全部修复
+  [OK] from typing import Concatenate (未修复): 已全部修复
+  [OK] from typing import Annotated (未修复): 已全部修复
+  [OK] import zoneinfo (未修复): 已全部修复
+  [OK] import graphlib (未修复): 已全部修复
+  [OK] PEP 695 type 语句 (3.12+): 已全部修复
+  [OK] PEP 695 泛型类语法 (3.12+): 已全部修复
+  [!] PEP 634 match/case (3.10+): 仍有 1 处残留
+  [OK] PEP 634 case 语句 (3.10+): 已全部修复
+  [OK] 括号化上下文管理器 (3.10+): 已全部修复
+  [OK] typing.NotRequired (3.11+) 未兼容: 已全部修复
+  [OK] collections.abc.Buffer (3.12+) 未兼容: 已全部修复
+  [OK] math.lcm (3.9+) 未修复: 已全部修复
+  [OK] math.nextafter (3.9+) 未修复: 已全部修复
+  [OK] math.ulp (3.9+) 未修复: 已全部修复
+  [OK] ast.unparse (3.9+) 未修复: 已全部修复
+  [OK] random.randbytes (3.9+) 未修复: 已全部修复
+  [OK] collections.XXX → collections.abc.XXX (3.9+) 未修复: 已全部修复
+  [OK] zip(strict=True) (3.10+) 未修复: 已全部修复
+  [OK] int.bit_count() (3.10+) 未修复: 已全部修复
+  [OK] aiter() (3.10+) 未修复: 已全部修复
+  [OK] anext() (3.10+) 未修复: 已全部修复
+  [OK] bisect key= (3.10+) 未修复: 已全部修复
+  [OK] dataclass(slots=True) (3.10+) 未修复: 已全部修复
+  [OK] BaseException.add_note() (3.11+) 未修复: 已全部修复
+  [!] tomllib (3.11+) 未修复: 仍有 1 处残留
+  [OK] asyncio.TaskGroup (3.11+) 未修复: 已全部修复
+  [OK] math.exp2() (3.11+) 未修复: 已全部修复
+  [OK] math.cbrt() (3.11+) 未修复: 已全部修复
+  [OK] datetime.UTC (3.11+) 未修复: 已全部修复
+  [OK] contextlib.chdir() (3.11+) 未修复: 已全部修复
+  [OK] operator.call() (3.11+) 未修复: 已全部修复
+  [OK] hashlib.file_digest() (3.11+) 未修复: 已全部修复
+  [OK] itertools.batched() (3.12+) 未修复: 已全部修复
+  [OK] pathlib.Path.walk() (3.12+) 未修复: 已全部修复
+  [OK] distutils import (3.12移除) 未修复: 已全部修复
+  [OK] warnings.deprecated() (3.13+) 未修复: 已全部修复
+  [OK] copy.replace() (3.13+) 未修复: 已全部修复
+  [OK] PEP 594 已移除模块 (3.13) 未修复: 已全部修复
+  [OK] base64.z85encode/decode() (3.13+) 未修复: 已全部修复
+  [OK] compression module (3.14+) 未修复: 已全部修复
+  [OK] concurrent.interpreters (3.14+) 未修复: 已全部修复
+  [OK] annotationlib (3.14+) 未修复: 已全部修复
+  [OK] frozendict (3.15+) 未修复: 已全部修复
+  [OK] sentinel() (3.15+) 未修复: 已全部修复
+  [OK] profiling module (3.15+) 未修复: 已全部修复
+  [OK] dbm.sqlite3 (3.15+) 未修复: 已全部修复
+
+部分特性仍有残留，请人工检查上述标记的文件。
+
+提示: 对于 C/C++ 源码中的 Python C API 兼容性问题，
+      请运行 fix_py38_c.py 脚本。

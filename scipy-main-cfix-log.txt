@@ -1,0 +1,285 @@
+PS E:\AI_FUWANGGEZHANG\GPT-SoVITS-v4-for-win7\runtime> python.exe E:\AI_FUWANGGEZHANG\scipy-main\scipy-main\fix_py38_c.py
+Python 3.8 兼容性修复脚本 - C/C++ 源码部分
+============================================================
+工作目录: E:\AI_FUWANGGEZHANG\scipy-main\scipy-main
+
+[0/7] 检查兼容头文件覆盖情况...
+  上游 pythoncapi_compat.h 提供 182 个 API
+  合并后（含 EXTRA_COMPAT）提供 213 个 API
+  EXTRA_COMPAT 额外提供 31 个 API:
+    - METH_METHOD
+    - PyErr_GetExcInfo
+    - PyErr_GetRaisedException
+    - PyErr_SetExcInfo
+    - PyErr_SetRaisedException
+    - PyInterpreterState_GetDict
+    - PyModule_AddFunctions
+    - PyObject_GetAIter
+    - PyObject_VectorcallDict
+    - PyObject_VectorcallMethod
+    - PyType_GetModule
+    - PyType_GetModuleByDef
+    - PyType_GetSlot
+    - Py_TPFLAGS_BASE_EXC_SUBCLASS
+    - Py_TPFLAGS_BYTES_SUBCLASS
+    - Py_TPFLAGS_DICT_SUBCLASS
+    - Py_TPFLAGS_DISALLOW_INSTANTIATION
+    - Py_TPFLAGS_HAVE_GC
+    - Py_TPFLAGS_HAVE_VECTORCALL
+    - Py_TPFLAGS_HAVE_VECTORCALL_LITERAL
+    - Py_TPFLAGS_IMMUTABLETYPE
+    - Py_TPFLAGS_LIST_SUBCLASS
+    - Py_TPFLAGS_LONG_SUBCLASS
+    - Py_TPFLAGS_MANAGED_DICT
+    - Py_TPFLAGS_MANAGED_WEAKREF
+    - Py_TPFLAGS_MAPPING
+    - Py_TPFLAGS_SEQUENCE
+    - Py_TPFLAGS_TUPLE_SUBCLASS
+    - Py_TPFLAGS_TYPE_SUBCLASS
+    - Py_TPFLAGS_UNICODE_SUBCLASS
+    - Py_TPFLAGS_USES_DICT_DESCR
+
+[1/7] 扫描 C/C++ 源文件...
+  找到 4864 个 C/C++ 文件
+
+[2/7] 检测使用 Python 3.9+ C API 的文件...
+
+  共 0 个文件需要添加兼容头文件
+
+[3/7] 检查已有 pythoncapi_compat.h 的完整性...
+  pythoncapi_compat.h: 缺少 31 个兼容实现: METH_METHOD, PyErr_GetExcInfo, PyErr_GetRaisedException, PyErr_SetExcInfo, PyErr_SetRaisedException...
+  已更新: pythoncapi_compat.h
+  已更新 1 个兼容头文件
+
+[4/7] 部署 pythoncapi_compat.h 兼容头文件...
+  pythoncapi_compat.h 已存在或无需部署
+
+[5/7] 添加兼容头文件 #include...
+  共修改 0 个文件
+
+[6/7] 修复其他 C API 兼容性问题...
+  修复: pythoncapi_compat.h
+  修复: scipy\integrate\pythoncapi_compat.h
+  修复: scipy\sparse\linalg\_dsolve\pythoncapi_compat.h
+  修复: scipy\special\pythoncapi_compat.h
+  修复: scipy\_lib\_uarray\pythoncapi_compat.h
+  共修复 5 个文件
+
+[7/7] 最终验证...
+  [OK] METH_METHOD: 已全部处理
+  [OK] PyBytesWriter_Create: 已全部处理
+  [OK] PyBytesWriter_Discard: 已全部处理
+  [OK] PyBytesWriter_Finish: 已全部处理
+  [OK] PyBytesWriter_FinishWithPointer: 已全部处理
+  [OK] PyBytesWriter_FinishWithSize: 已全部处理
+  [OK] PyBytesWriter_Format: 已全部处理
+  [OK] PyBytesWriter_GetData: 已全部处理
+  [OK] PyBytesWriter_GetSize: 已全部处理
+  [OK] PyBytesWriter_Grow: 已全部处理
+  [OK] PyBytesWriter_GrowAndUpdatePointer: 已全部处理
+  [OK] PyBytesWriter_Resize: 已全部处理
+  [OK] PyBytesWriter_WriteBytes: 已全部处理
+  [OK] PyBytes_Join: 已全部处理
+  [OK] PyCode_GetCellvars: 已全部处理
+  [OK] PyCode_GetCode: 已全部处理
+  [OK] PyCode_GetFreevars: 已全部处理
+  [OK] PyCode_GetVarnames: 已全部处理
+  [OK] PyConfig_Get: 已全部处理
+  [OK] PyConfig_GetInt: 已全部处理
+  [OK] PyDict_ContainsString: 已全部处理
+  [OK] PyDict_GetItemRef: 已全部处理
+  [OK] PyDict_GetItemStringRef: 已全部处理
+  [OK] PyDict_Pop: 已全部处理
+  [OK] PyDict_PopString: 已全部处理
+  [OK] PyDict_SetDefaultRef: 已全部处理
+  [OK] PyErr_GetExcInfo: 已全部处理
+  [OK] PyErr_GetRaisedException: 已全部处理
+  [OK] PyErr_SetExcInfo: 已全部处理
+  [OK] PyErr_SetRaisedException: 已全部处理
+  [OK] PyFloat_Pack2: 已全部处理
+  [OK] PyFloat_Pack4: 已全部处理
+  [OK] PyFloat_Pack8: 已全部处理
+  [OK] PyFloat_Unpack2: 已全部处理
+  [OK] PyFloat_Unpack4: 已全部处理
+  [OK] PyFloat_Unpack8: 已全部处理
+  [OK] PyFrame_GetBack: 已全部处理
+  [OK] PyFrame_GetBuiltins: 已全部处理
+  [OK] PyFrame_GetCode: 已全部处理
+  [OK] PyFrame_GetGlobals: 已全部处理
+  [OK] PyFrame_GetLasti: 已全部处理
+  [OK] PyFrame_GetLocals: 已全部处理
+  [OK] PyFrame_GetVar: 已全部处理
+  [OK] PyFrame_GetVarString: 已全部处理
+  [OK] PyHASH_BITS: 已全部处理
+  [OK] PyHASH_IMAG: 已全部处理
+  [OK] PyHASH_INF: 已全部处理
+  [OK] PyHASH_MODULUS: 已全部处理
+  [OK] PyImport_AddModuleRef: 已全部处理
+  [OK] PyInterpreterState_Get: 已全部处理
+  [OK] PyInterpreterState_GetDict: 已全部处理
+  [OK] PyIter_NextItem: 已全部处理
+  [OK] PyList_Clear: 已全部处理
+  [OK] PyList_Extend: 已全部处理
+  [OK] PyList_GetItemRef: 已全部处理
+  [OK] PyLongLayout: 已全部处理
+  [OK] PyLongWriter_Create: 已全部处理
+  [OK] PyLongWriter_Discard: 已全部处理
+  [OK] PyLongWriter_Finish: 已全部处理
+  [OK] PyLong_AsInt: 已全部处理
+  [OK] PyLong_AsInt32: 已全部处理
+  [OK] PyLong_AsInt64: 已全部处理
+  [OK] PyLong_AsUInt32: 已全部处理
+  [OK] PyLong_AsUInt64: 已全部处理
+  [OK] PyLong_Export: 已全部处理
+  [OK] PyLong_FreeExport: 已全部处理
+  [OK] PyLong_FromInt32: 已全部处理
+  [OK] PyLong_FromInt64: 已全部处理
+  [OK] PyLong_FromUInt32: 已全部处理
+  [OK] PyLong_FromUInt64: 已全部处理
+  [OK] PyLong_GetNativeLayout: 已全部处理
+  [OK] PyLong_GetSign: 已全部处理
+  [OK] PyLong_IsNegative: 已全部处理
+  [OK] PyLong_IsPositive: 已全部处理
+  [OK] PyLong_IsZero: 已全部处理
+  [OK] PyMapping_GetOptionalItem: 已全部处理
+  [OK] PyMapping_GetOptionalItemString: 已全部处理
+  [OK] PyMapping_HasKeyStringWithError: 已全部处理
+  [OK] PyMapping_HasKeyWithError: 已全部处理
+  [OK] PyModule_Add: 已全部处理
+  [OK] PyModule_AddFunctions: 已全部处理
+  [OK] PyModule_AddObjectRef: 已全部处理
+  [OK] PyModule_AddType: 已全部处理
+  [OK] PyObject_CallNoArgs: 已全部处理
+  [OK] PyObject_CallOneArg: 已全部处理
+  [OK] PyObject_ClearManagedDict: 已全部处理
+  [OK] PyObject_GC_IsFinalized: 已全部处理
+  [OK] PyObject_GC_IsTracked: 已全部处理
+  [OK] PyObject_GetAIter: 已全部处理
+  [OK] PyObject_GetOptionalAttr: 已全部处理
+  [OK] PyObject_GetOptionalAttrString: 已全部处理
+  [OK] PyObject_HasAttrStringWithError: 已全部处理
+  [OK] PyObject_HasAttrWithError: 已全部处理
+  [OK] PyObject_Vectorcall: 已全部处理
+  [OK] PyObject_VectorcallDict: 已全部处理
+  [OK] PyObject_VectorcallMethod: 已全部处理
+  [OK] PyObject_VisitManagedDict: 已全部处理
+  [OK] PySys_GetAttr: 已全部处理
+  [OK] PySys_GetAttrString: 已全部处理
+  [OK] PySys_GetOptionalAttr: 已全部处理
+  [OK] PySys_GetOptionalAttrString: 已全部处理
+  [OK] PyThreadState_EnterTracing: 已全部处理
+  [OK] PyThreadState_GetFrame: 已全部处理
+  [OK] PyThreadState_GetID: 已全部处理
+  [OK] PyThreadState_GetInterpreter: 已全部处理
+  [OK] PyThreadState_GetUnchecked: 已全部处理
+  [OK] PyThreadState_LeaveTracing: 已全部处理
+  [OK] PyTime_AsSecondsDouble: 已全部处理
+  [OK] PyTime_Monotonic: 已全部处理
+  [OK] PyTime_PerfCounter: 已全部处理
+  [OK] PyTime_Time: 已全部处理
+  [OK] PyTuple_FromArray: 已全部处理
+  [OK] PyType_GetModule: 已全部处理
+  [OK] PyType_GetModuleByDef: 已全部处理
+  [OK] PyType_GetSlot: 已全部处理
+  [OK] PyUnicodeWriter_Create: 已全部处理
+  [OK] PyUnicodeWriter_Discard: 已全部处理
+  [OK] PyUnicodeWriter_Finish: 已全部处理
+  [OK] PyUnicodeWriter_Format: 已全部处理
+  [OK] PyUnicodeWriter_WriteASCII: 已全部处理
+  [OK] PyUnicodeWriter_WriteChar: 已全部处理
+  [OK] PyUnicodeWriter_WriteRepr: 已全部处理
+  [OK] PyUnicodeWriter_WriteStr: 已全部处理
+  [OK] PyUnicodeWriter_WriteSubstring: 已全部处理
+  [OK] PyUnicodeWriter_WriteUTF8: 已全部处理
+  [OK] PyUnicodeWriter_WriteWideChar: 已全部处理
+  [OK] PyUnicode_Equal: 已全部处理
+  [OK] PyUnicode_EqualToUTF8: 已全部处理
+  [OK] PyUnicode_EqualToUTF8AndSize: 已全部处理
+  [OK] PyUnstable_EnableTryIncRef: 已全部处理
+  [OK] PyUnstable_Object_IsUniquelyReferenced: 已全部处理
+  [OK] PyUnstable_SetImmortal: 已全部处理
+  [OK] PyUnstable_TryIncRef: 已全部处理
+  [OK] PyUnstable_Unicode_GET_CACHED_HASH: 已全部处理
+  [OK] PyVectorcall_NARGS: 已全部处理
+  [OK] PyWeakref_GetRef: 已全部处理
+  [OK] Py_GetConstant: 已全部处理
+  [OK] Py_GetConstantBorrowed: 已全部处理
+  [OK] Py_HashBuffer: 已全部处理
+  [OK] Py_HashPointer: 已全部处理
+  [OK] Py_IS_TYPE: 已全部处理
+  [OK] Py_Is: 已全部处理
+  [OK] Py_IsFalse: 已全部处理
+  [OK] Py_IsFinalizing: 已全部处理
+  [OK] Py_IsNone: 已全部处理
+  [OK] Py_IsTrue: 已全部处理
+  [OK] Py_NewRef: 已全部处理
+  [OK] Py_SET_REFCNT: 已全部处理
+  [OK] Py_SET_SIZE: 已全部处理
+  [OK] Py_SET_TYPE: 已全部处理
+  [OK] Py_TPFLAGS_BASE_EXC_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_BYTES_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_DICT_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_DISALLOW_INSTANTIATION: 已全部处理
+  [OK] Py_TPFLAGS_HAVE_GC: 已全部处理
+  [OK] Py_TPFLAGS_HAVE_VECTORCALL: 已全部处理
+  [OK] Py_TPFLAGS_HAVE_VECTORCALL_LITERAL: 已全部处理
+  [OK] Py_TPFLAGS_IMMUTABLETYPE: 已全部处理
+  [OK] Py_TPFLAGS_LIST_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_LONG_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_MANAGED_DICT: 已全部处理
+  [OK] Py_TPFLAGS_MANAGED_WEAKREF: 已全部处理
+  [OK] Py_TPFLAGS_MAPPING: 已全部处理
+  [OK] Py_TPFLAGS_SEQUENCE: 已全部处理
+  [OK] Py_TPFLAGS_TUPLE_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_TYPE_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_UNICODE_SUBCLASS: 已全部处理
+  [OK] Py_TPFLAGS_USES_DICT_DESCR: 已全部处理
+  [OK] Py_T_BOOL: 已全部处理
+  [OK] Py_T_BYTE: 已全部处理
+  [OK] Py_T_CHAR: 已全部处理
+  [OK] Py_T_DOUBLE: 已全部处理
+  [OK] Py_T_FLOAT: 已全部处理
+  [OK] Py_T_INT: 已全部处理
+  [OK] Py_T_LONG: 已全部处理
+  [OK] Py_T_LONGLONG: 已全部处理
+  [OK] Py_T_OBJECT_EX: 已全部处理
+  [OK] Py_T_PYSSIZET: 已全部处理
+  [OK] Py_T_SHORT: 已全部处理
+  [OK] Py_T_STRING: 已全部处理
+  [OK] Py_T_STRING_INPLACE: 已全部处理
+  [OK] Py_T_UBYTE: 已全部处理
+  [OK] Py_T_UINT: 已全部处理
+  [OK] Py_T_ULONG: 已全部处理
+  [OK] Py_T_ULONGLONG: 已全部处理
+  [OK] Py_T_USHORT: 已全部处理
+  [OK] Py_XNewRef: 已全部处理
+  [OK] Py_fclose: 已全部处理
+  [OK] Py_fopen: 已全部处理
+  [!] METH_METHOD: 5 个文件仍有未处理的 METH_METHOD
+  [OK] Py_MOD_GIL_NOT_USED/PyUnstable_Module_SetGIL: 已全部保护
+
+部分 C API 仍有残留，请人工检查上述标记的文件。
+
+注意事项:
+  1. PyCMethod / METH_METHOD (Python 3.9+) 无法简单兼容，
+     已替换为注释标记，需要人工审查相关代码。
+  2. PyType_GetSlot 已提供完整兼容实现（通过遍历 tp_base 链）。
+  3. PyType_GetModule 已提供兼容实现（通过 __module__ 查找模块对象）。
+  4. PyType_GetModuleByDef 仍为 stub 实现（需要模块定义指针匹配，
+     无法简单实现），如遇运行时错误需人工审查。
+  5. PyObject_VectorcallDict/Method (Python 3.12+) 已添加兼容实现，
+     使用 PyObject_Call 回退方案。
+  6. PyDict_GetItemRef/PyDict_GetItemStringRef (Python 3.13+) 已添加兼容实现，
+     使用 PyDict_GetItemWithError 回退方案。
+  7. PyList_GetItemRef (Python 3.13+) 已添加兼容实现，
+     使用 PyList_GetItem + Py_XINCREF 回退方案。
+  8. PyLong_AsInt (Python 3.13+) 已添加兼容实现，
+     使用 PyLong_AsLong + 范围检查回退方案。
+  9. Py_MOD_GIL_NOT_USED/PyUnstable_Module_SetGIL (Python 3.13+)
+     已添加 #ifdef Py_GIL_DISABLED 或版本检查保护。
+  10. 脚本会自动检测已有 pythoncapi_compat.h 的完整性，
+      缺少兼容实现的文件会被更新为完整版本。
+  11. 对于 pytorch 等有项目特定 pythoncapi_compat.h 的项目，
+      脚本会使用项目特定的 include 路径（如 <torch/csrc/utils/pythoncapi_compat.h>）。
+  12. 建议编译测试确认所有 C 扩展正常工作。
+  13. 对于 Python 源码的修复，请运行 fix_py38_python.py 脚本。
