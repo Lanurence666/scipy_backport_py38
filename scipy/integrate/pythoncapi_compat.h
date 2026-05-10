@@ -1,5 +1,8 @@
 
-#if PY_VERSION_HEX < 0x030900A0
+#ifndef PYTHONCAPI_COMPAT_SCIPY_INTEGRATE
+#define PYTHONCAPI_COMPAT_SCIPY_INTEGRATE
+
+#if PY_VERSION_HEX < 0x030900A0 && !defined(PyType_GetModuleByDef)
 static inline PyObject* PyType_GetModuleByDef(PyTypeObject *type, PyModuleDef *def)
 {
     PyErr_SetString(PyExc_RuntimeError, "PyType_GetModuleByDef is not available in Python 3.8");
@@ -7,7 +10,7 @@ static inline PyObject* PyType_GetModuleByDef(PyTypeObject *type, PyModuleDef *d
 }
 #endif
 
-#if PY_VERSION_HEX < 0x030900A0
+#if PY_VERSION_HEX < 0x030900A0 && !defined(PyType_GetModule)
 static inline PyObject* PyType_GetModule(PyTypeObject *type)
 {
     if (type == NULL) {
@@ -3136,3 +3139,4 @@ static inline PyObject* PyObject_CallMethodOneArg(PyObject *obj, PyObject *name,
 }
 #endif
 #endif  // PYTHONCAPI_COMPAT
+#endif  // PYTHONCAPI_COMPAT_SCIPY_INTEGRATE

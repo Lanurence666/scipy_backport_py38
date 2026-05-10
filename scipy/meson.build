@@ -195,7 +195,10 @@ fortranobject_dep = declare_dependency(
   compile_args: _f2py_c_args,
 )
 
-f2py = find_program('f2py')
+f2py = find_program('f2py', required: false)
+if not f2py.found()
+  f2py = [py3, '-m', 'numpy.f2py']
+endif
 # It should be quite rare for the `f2py` executable to not be the one from
 # `numpy` installed in the Python env we are building for (unless we are
 # cross-compiling). If it is from a different env, that is still fine as long
@@ -204,7 +207,10 @@ f2py = find_program('f2py')
 # details).
 # This should be robust enough. If not, we can make this more complex, using
 # a fallback to `python -m f2py` rather than erroring out.
-f2py_version = run_command([f2py, '-v'], check: true).stdout().strip()
+f2py_version = run_command(py3,
+  ['-c', 'import sys; sys.path=[p for p in sys.path if "scipy_backport_py38" not in p]; import numpy; v=numpy.__version__; print(v.split(".dev")[0] if ".dev" in v else v)'],
+  check: true
+).stdout().strip()
 if f2py_version.version_compare('<'+min_numpy_version)
   error(f'Found f2py executable is too old: @f2py_version@')
 endif
