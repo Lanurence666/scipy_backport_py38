@@ -106,6 +106,15 @@ pip install dist\scipy-*.whl
 
 ### Test File
 
+A comprehensive test script `test_scipy_full.py` is included in this repository. It tests all scipy submodule imports and runs functional tests on key modules.
+
+```batch
+# Run the comprehensive test
+python test_scipy_full.py
+```
+
+Or use this quick test:
+
 ```python
 import numpy as np
 import scipy
