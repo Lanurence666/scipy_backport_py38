@@ -255,7 +255,7 @@ def mean(double[:, :, :] matrix, weights=None, axis=None):
     # or (). The code path is unchanged for any of the options except (), where we
     # immediately return the matrix
     if axis == ():
-        return matrix
+        return np.asarray(matrix, dtype=float)
 
     if axis is None:
         axis = (0,)

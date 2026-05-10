@@ -351,7 +351,7 @@ cdef inline double[:, :] _compose_quat(
 
 def compose_quat(p, q):
     """Composition of quaternions."""
-    return _compose_quat(p, q)
+    return np.asarray(_compose_quat(p, q), dtype=float)
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
@@ -985,7 +985,7 @@ def mean(double[:, :] quat, weights=None, axis=None):
     # or (). The code path is unchanged for any of the options except (), where we
     # immediately return the quaternion
     if axis == ():
-        return quat
+        return np.asarray(quat, dtype=float)
 
     if axis is None:
         axis = (0,)
@@ -1026,7 +1026,7 @@ def mean(double[:, :] quat, weights=None, axis=None):
 @cython.boundscheck(False)
 def reduce(double[:, :] quat, left=None, right=None):
     if left is None and right is None:
-        reduced = quat
+        reduced = np.asarray(quat, dtype=float)
         return reduced, None, None
     elif right is None:
         right = identity(1)
@@ -1068,7 +1068,7 @@ def reduce(double[:, :] quat, left=None, right=None):
     # Reduce the rotation using the best indices
     left = left[left_best]
     right = right[right_best]
-    reduced = _compose_quat(left, _compose_quat(p, right))
+    reduced = np.asarray(_compose_quat(left, _compose_quat(p, right)), dtype=float)
 
     return reduced, left_best, right_best
 
@@ -1107,7 +1107,7 @@ def apply(double[:, :] quat, const double[:, :] vectors, bint inverse=False) -> 
 @cython.wraparound(False)
 def setitem(quat: double[:, :], value: double[:, :], indexer):
     quat[indexer] = value
-    return quat
+    return np.asarray(quat, dtype=float)
 
 
 @cython.embedsignature(True)
@@ -1250,7 +1250,7 @@ def align_vectors(a, b, weights=None, bint return_sensitivity=False):
         a_est = apply(q_opt, b)
         rssd = np.sqrt(np.sum(weights_inf_zero @ (a - a_est)**2))
 
-        return q_opt[0, ...], rssd, None
+        return np.asarray(q_opt, dtype=float)[0, ...], rssd, None
 
     # If no infinite weights and multiple vectors, proceed with normal
     # algorithm

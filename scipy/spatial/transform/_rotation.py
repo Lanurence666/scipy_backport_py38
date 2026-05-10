@@ -41,13 +41,9 @@ def select_backend(xp: ModuleType, cython_compatible: bool):
     support quaternions of arbitrary dimensions. We therefore only use the Array API
     backend for numpy if we are dealing with rotations of more than one leading
     dimension.
-
-    NOTE: The Cython backend is currently disabled for numpy arrays due to
-    segfaults caused by incompatibility between Cython memoryviews and numpy 2.x.
-    All numpy operations now use the Python (xp) backend instead.
     """
-    if is_numpy(xp):
-        return xp_backend
+    if is_numpy(xp) and cython_compatible:
+        return cython_backend
     return backend_registry.get(xp, xp_backend)
 
 
