@@ -6797,7 +6797,7 @@ def ttest_ind(a, b, *, axis=0, equal_var=True, nan_policy='propagate',
     if not (0 <= trim < .5):
         raise ValueError("Trimming percentage should be 0 <= `trim` < .5.")
 
-    if not isinstance(method, (PermutationMethod, MonteCarloMethod, None)):
+    if not isinstance(method, (PermutationMethod, MonteCarloMethod, type(None))):
         message = ("`method` must be an instance of `PermutationMethod`, an instance "
                    "of `MonteCarloMethod`, or None (default).")
         raise ValueError(message)

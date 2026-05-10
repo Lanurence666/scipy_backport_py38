@@ -432,7 +432,7 @@ def block_diag(*arrs):
 
     if arrs == ():
         arrs = ([],)
-    arrs = [xpx.atleast_nd(xp.asarray(a), ndim=2) for a in arrs]
+    arrs = [xpx.atleast_nd(xp.asarray(a), ndim=2, xp=xp) for a in arrs]
 
     batch_shapes = [a.shape[:-2] for a in arrs]
     batch_shape = np.broadcast_shapes(*batch_shapes)
@@ -1021,7 +1021,7 @@ def fiedler(a):
 
     """
     xp = array_namespace(a)
-    a = xpx.atleast_nd(xp.asarray(a), ndim=1)
+    a = xpx.atleast_nd(xp.asarray(a), ndim=1, xp=xp)
 
     if xp_size(a) == 0:
         return xp.asarray([], dtype=xp.float64)

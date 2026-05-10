@@ -524,7 +524,7 @@ def _axis_nan_policy_factory(tuple_to_result, default_axis=0,
                 xp = array_namespace(*samples)
                 samples = xp_promote(*samples, xp=xp)
                 samples = (samples,) if not isinstance(samples, tuple) else samples
-                samples = [xpx.atleast_nd(sample, ndim=1) for sample in samples]
+                samples = [xpx.atleast_nd(sample, ndim=1, xp=xp) for sample in samples]
             except KeyError:  # let the function raise the right error
                 # might need to revisit this if required arg is not a "sample"
                 hypotest_fun_in(*args, **kwds)

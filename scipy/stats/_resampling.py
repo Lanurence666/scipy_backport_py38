@@ -1643,7 +1643,7 @@ def _permutation_test_iv(data, statistic, permutation_type, vectorized,
     data = _broadcast_arrays(data, axis, xp=xp)
     data_iv = []
     for sample in data:
-        sample = xpx.atleast_nd(sample, ndim=1)
+        sample = xpx.atleast_nd(sample, ndim=1, xp=xp)
         if sample.shape[axis] <= 1:
             raise ValueError("each sample in `data` must contain two or more "
                              "observations along `axis`.")

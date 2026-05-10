@@ -81,7 +81,7 @@ def _logspace(start, stop, num=50, endpoint=True, base=10.0, dtype=None, *, xp):
         start, stop, base = map(xp.asarray, (start, stop, base))
         ndmax = xp.broadcast_arrays(start, stop, base).ndim
         start, stop, base = (
-            xpx.atleast_nd(a, ndim=ndmax)
+            xpx.atleast_nd(a, ndim=ndmax, xp=xp)
             for a in (start, stop, base)
         )
         base = xp.expand_dims(base)
@@ -1831,7 +1831,7 @@ def _align_nums(nums, xp):
         return nums
 
     except ValueError:
-        nums = [xpx.atleast_nd(xp.asarray(num), ndim=1) for num in nums]
+        nums = [xpx.atleast_nd(xp.asarray(num), ndim=1, xp=xp) for num in nums]
         max_width = max(xp_size(num) for num in nums)
 
         # pre-allocate
@@ -1910,7 +1910,7 @@ def normalize(b, a):
     den = xpx.atleast_nd(den, ndim=1, xp=xp)
 
     num = xp.asarray(b)
-    num = xpx.atleast_nd(_align_nums(num, xp), ndim=2, xp=xp)
+    num = xpx.atleast_nd(_align_nums(num, xp, xp=xp), ndim=2, xp=xp)
 
     if den.ndim != 1:
         raise ValueError("Denominator polynomial must be rank-1 array.")

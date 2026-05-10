@@ -3312,7 +3312,7 @@ class UnivariateDistribution(_ProbabilityDistribution):
 
     def _lmoment_from_order_statistics(self, order, **params):
         k = np.arange(order)
-        k = xpx.atleast_nd(k, ndim=self._ndim + 1).T
+        k = xpx.atleast_nd(k, ndim=self._ndim + 1, xp=xp).T
         E = order_statistic(self, r=order-k, n=order).mean()
         bc = special.binom(order-1, k)
         return np.sum((-1)**k * bc * E, axis=0) / order

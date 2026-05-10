@@ -715,7 +715,7 @@ def _robust_slopes(y, *, x, alpha=None, method, pfun):
                     xp.astype(nt, xp.int64)-1)
     Rl = xp.maximum(xp.astype(xp.round((nt + z*sigma)/2.), xp.int64) - 1,
                     xp.asarray(0, dtype=xp.int64))
-    R = xp.concat((xpx.atleast_nd(Rl, ndim=1), xpx.atleast_nd(Ru, ndim=1)), axis=-1)
+    R = xp.concat((xpx.atleast_nd(Rl, ndim=1, xp=xp), xpx.atleast_nd(Ru, ndim=1, xp=xp)), axis=-1)
     slopes = xp.sort(slopes, axis=-1)
     delta = xp.take_along_axis(slopes, R, axis=-1)
     i_nan = xp.broadcast_to(sigsq < 0, delta.shape)

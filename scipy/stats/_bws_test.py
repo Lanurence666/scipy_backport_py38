@@ -12,7 +12,7 @@ def _bws_input_validation(x, y, alternative, axis, method):
     ''' Input validation and standardization for bws test'''
     xp = array_namespace(x, y)
     x, y = xp.asarray(x), xp.asarray(y)
-    x, y = xpx.atleast_nd(x, ndim=1), xpx.atleast_nd(y, ndim=1)
+    x, y = xpx.atleast_nd(x, ndim=1, xp=xp), xpx.atleast_nd(y, ndim=1, xp=xp)
 
     axis_none = axis is None
     ndim = max(x.ndim, y.ndim)
